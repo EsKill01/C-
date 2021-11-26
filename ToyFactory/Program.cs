@@ -6,13 +6,9 @@ namespace ToyFactory
     {
         static void Main(string[] args)
         {
-            var doll = new Doll();
-            var box = new Box<Doll>();
-            var box2 = new Box<Carr>();
+            IFactory<Doll> factory = new DollFactory();
 
-
-            box.Put(doll);
-            box2.Put(new Carr());
+            var boxes = BoxHelper.GenerateBoxes<Doll>(50, factory.MakeElement);
 
             Console.WriteLine("Hello World!");
         }
